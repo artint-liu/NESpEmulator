@@ -78,7 +78,11 @@ public:
     PixelEngine(int width, int height, std::string_view title, int scale);
     virtual ~PixelEngine() = default;
 
-    void run();
+    //void run();
+
+    void init();
+    void loop();
+    void exit();
 
     void setFpsLimit(int value);
     void setFpsUpdateInterval(int ms);
@@ -103,6 +107,8 @@ public:
     virtual void onFocus(bool focused);
     virtual void onRefresh();
 
+    static void keyCallback(PixelEngine* pixelEngine, int key, int action);
+
 private:
     using Clock = std::conditional_t<std::chrono::high_resolution_clock::is_steady,
                                      std::chrono::high_resolution_clock,
@@ -115,7 +121,7 @@ private:
         GLFWwindow* window;
     };
 
-    static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
+    //static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
     static void framebufferSizeCallback(GLFWwindow* window, int width, int height);
     static void windowSizeCallback(GLFWwindow* window, int width, int height);
@@ -141,16 +147,16 @@ private:
 
     std::string title;
 
-    GLContext glContext;
+    //GLContext glContext;
 
-    Shader shader;
-    VAO vao;
-    VBO vbo;
-    EBO ebo;
+    //Shader shader;
+    //VAO vao;
+    //VBO vbo;
+    //EBO ebo;
 
     std::vector<Pixel> pixels;
     std::vector<Pixel> pixelsCopy; // guard by `mtx`
-    Texture texture;
+    //Texture texture;
 
     Clock::time_point startTime;
     Clock::duration freeTime;
@@ -158,8 +164,9 @@ private:
     Clock::duration frameTimeLimit;
     Clock::duration fpsUpdateInterval;
 
-    std::atomic<bool> exit;
+    std::atomic<bool> m_bExit;
     std::mutex mtx; // for `pixelsCopy`
+    std::thread* m_pThread = nullptr;
 
     std::thread::id mainThreadId;
     std::thread::id userThreadId;

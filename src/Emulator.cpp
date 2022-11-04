@@ -31,6 +31,7 @@ std::string getFileSha256(std::string_view filePath) {
 
     const mbedtls_md_info_t* info = mbedtls_md_info_from_type(MBEDTLS_MD_SHA256);
     mbedtls_md(info, reinterpret_cast<unsigned char*>(fileContent.data()), fileContent.size(), mdValue.data());
+    //assert(false); // 没实现这个
 
     std::ostringstream oss;
     for (unsigned char value : mdValue) {
@@ -41,7 +42,7 @@ std::string getFileSha256(std::string_view filePath) {
 }
 } // namespace
 
-Emulator::Emulator(std::string_view nesFile)
+Emulator::Emulator(LPCSTR nesFile)
     : PixelEngine(256, 240, "Nes Emulator", 3),
       nesFilePath(nesFile),
       audioMaker(SampleRate, 1),

@@ -10,6 +10,8 @@
 #include <string_view>
 #include <unordered_map>
 #include <vector>
+#include <windows.h>
+#include <tchar.h>
 
 #include <audio_maker/AudioMaker.h>
 #include <nes/Bus.h>
@@ -17,7 +19,7 @@
 
 class Emulator : public PixelEngine {
 public:
-    explicit Emulator(std::string_view nesFile);
+    explicit Emulator(LPCSTR nesFile);
 
     void onBegin() override;
     void onUpdate() override;
