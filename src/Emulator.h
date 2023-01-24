@@ -10,8 +10,10 @@
 #include <string_view>
 #include <unordered_map>
 #include <vector>
+#ifdef _WIN32
 #include <windows.h>
 #include <tchar.h>
+#endif
 
 #include <audio_maker/AudioMaker.h>
 #include <nes/Bus.h>

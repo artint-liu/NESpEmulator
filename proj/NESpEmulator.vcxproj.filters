@@ -12,6 +12,9 @@
     <Filter Include="src">
       <UniqueIdentifier>{1d8c1b08-13e3-459c-8f84-5fcf37704b74}</UniqueIdentifier>
     </Filter>
+    <Filter Include="include">
+      <UniqueIdentifier>{ec274af8-6d97-41a6-bee9-af892af1c691}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -31,6 +34,111 @@
     </ClInclude>
     <ClInclude Include="NESpEmulator.h">
       <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\audio_maker\AudioMaker.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\glad\glad.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mbedtls\md.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mbedtls\platform_time.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mbedtls\platform_util.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mbedtls\private_access.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mbedtls\sha256.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mbedtls\build_info.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mbedtls\check_config.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mbedtls\config_psa.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mbedtls\mbedtls_config.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\PPU.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Bus.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Cartridge.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\CPU.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Joypad.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\literals.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Mapper.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Mirroring.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\NesFile.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Mapper\Mapper4.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Mapper\Mapper0.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Mapper\Mapper1.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Mapper\Mapper2.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\Mapper\Mapper3.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU\Triangle.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU\DMC.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU\Envelope.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU\LengthCounter.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU\Noise.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU\Pulse.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU\StatusRegister.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU\Sweep.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\nes\APU\Timer.h">
+      <Filter>include</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
