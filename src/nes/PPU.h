@@ -7,7 +7,11 @@
 #include <functional>
 #include <istream>
 #include <ostream>
+#ifdef STD_SPAN
 #include <span>
+#else
+#include "myspan.h"
+#endif
 #include <vector>
 
 class Bus;
@@ -23,9 +27,15 @@ public:
 
     class Frame {
     public:
-        std::span<const std::uint8_t> getRawPixels() const {
-            return std::span{reinterpret_cast<const std::uint8_t*>(pixels.data()), Width * Height * sizeof(Pixel)};
+#ifdef STD_SPAN
+         std::span<const std::uint8_t> getRawPixels() const {
+         return std::span{reinterpret_cast<const std::uint8_t*>(pixels.data()), Width * Height * sizeof(Pixel)};
         }
+#else
+        MySpan<const std::uint8_t> getRawPixels() const {
+            return MySpan(reinterpret_cast<const std::uint8_t*>(pixels.data()), Width * Height * sizeof(Pixel));
+        }
+#endif
 
         Pixel getPixel(int x, int y) const {
             assert(x >= 0 && x < Width);
@@ -73,7 +83,11 @@ public:
     void writeScroll(std::uint8_t data);
     void writeAddr(std::uint8_t data);
     void writeData(std::uint8_t data);
+#ifdef STD_SPAN
     void writeOamDMA(std::span<std::uint8_t, 256> buffer);
+#else
+    void writeOamDMA(MySpan<std::uint8_t> buffer);
+#endif
     void writePalette(std::uint16_t addr, std::uint8_t data);
 
     void serialize(std::ostream& os) const;

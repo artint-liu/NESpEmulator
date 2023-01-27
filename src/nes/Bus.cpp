@@ -3,6 +3,9 @@
 
 #include <nes/Bus.h>
 #include <nes/Mirroring.h>
+#ifndef STD_SPAN
+#include "myspan.h"
+#endif
 
 namespace {
 std::uint16_t mirrorPaletteAddr(std::uint16_t addr) {
@@ -186,7 +189,11 @@ void Bus::cpuWrite(std::uint16_t addr, std::uint8_t data) {
                 buffer[i] = cpuRead(hi | i);
             }
 
+#ifdef STD_SPAN
             ppu.writeOamDMA(buffer);
+#else
+            ppu.writeOamDMA(MySpan<std::uint8_t>(buffer.data(), buffer.size()));
+#endif
         } else if (addr == 0x4016) {
             joypad1.write(data);
             joypad2.write(data);

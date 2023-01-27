@@ -327,11 +327,17 @@ void PixelEngine::drawPixel(int x, int y, Pixel pixel) {
 
   pixels[y * width + x] = pixel;
 }
-
+#ifdef STD_SPAN
 void PixelEngine::drawPixels(std::span<const std::uint8_t> rawPixels) {
   assert(rawPixels.size() == pixels.size() * sizeof(decltype(pixels)::value_type));
   std::memcpy(pixels.data(), rawPixels.data(), rawPixels.size());
 }
+#else
+void PixelEngine::drawPixels(MySpan<const std::uint8_t> rawPixels) {
+  assert(rawPixels.size() == pixels.size() * sizeof(decltype(pixels)::value_type));
+  std::memcpy(pixels.data(), rawPixels.data(), rawPixels.size());
+}
+#endif
 
 void PixelEngine::onBegin() {
   assertInMainThread();

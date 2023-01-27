@@ -4,7 +4,11 @@
 #include <atomic>
 #include <chrono>
 #include <mutex>
+#ifdef STD_SPAN
 #include <span>
+#else
+#include "myspan.h"
+#endif
 #include <string>
 #include <string_view>
 #include <thread>
@@ -91,7 +95,11 @@ public:
 
     Pixel getPixel(int x, int y);
     void drawPixel(int x, int y, Pixel pixel);
+#ifdef STD_SPAN
     void drawPixels(std::span<const std::uint8_t> rawPixels);
+#else
+    void drawPixels(MySpan<const std::uint8_t> rawPixels);
+#endif
 
     virtual void onBegin();
     virtual void onUpdate();

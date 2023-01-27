@@ -227,12 +227,19 @@ void PPU::writeData(std::uint8_t data) {
     assert(addr >= 0x0000 && addr < 0x4000);
     write(addr, data);
 }
-
+#ifdef STD_SPAN
 void PPU::writeOamDMA(std::span<std::uint8_t, 256> buffer) {
     for (std::uint8_t data : buffer) {
         primaryOamData[oamAddr++] = data;
     }
 }
+#else
+void PPU::writeOamDMA(MySpan<std::uint8_t> buffer) {
+    for (size_t i = 0; i < buffer.size(); i++) {
+        primaryOamData[oamAddr++] = buffer.data()[i];
+    }
+}
+#endif
 
 void PPU::writePalette(std::uint16_t addr, std::uint8_t data) {
     assert(addr >= 0x3F00 && addr < 0x3F20);
