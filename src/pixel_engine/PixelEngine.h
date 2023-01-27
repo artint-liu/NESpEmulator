@@ -126,16 +126,22 @@ public:
     static void keyCallback(PixelEngine* pixelEngine, int key, int action);
 
 private:
+#if STD_CONDITIONAL
     using Clock = std::conditional_t<std::chrono::high_resolution_clock::is_steady,
                                      std::chrono::high_resolution_clock,
                                      std::chrono::steady_clock>;
+#else
+    using Clock = std::chrono::steady_clock;
+#endif
 
+#ifdef OPENGL
     struct GLContext {
         GLContext(int width, int height, std::string_view title);
         ~GLContext();
 
         GLFWwindow* window;
     };
+#endif
 
     //static void keyCallback(GLFWwindow* window, int key, int scancode, int action, int mods);
 
