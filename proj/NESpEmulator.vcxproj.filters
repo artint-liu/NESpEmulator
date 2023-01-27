@@ -140,6 +140,36 @@
     <ClInclude Include="..\src\nes\APU\Timer.h">
       <Filter>include</Filter>
     </ClInclude>
+    <ClInclude Include="..\src\pixel_engine\TaskQueue.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pixel_engine\Texture.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pixel_engine\VAO.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pixel_engine\VBO.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pixel_engine\EBO.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pixel_engine\Pixel.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pixel_engine\PixelEngine.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\pixel_engine\Shader.h">
+      <Filter>include</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\myspan.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
+    <ClInclude Include="..\src\mystring_view.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="..\src\main.cpp">

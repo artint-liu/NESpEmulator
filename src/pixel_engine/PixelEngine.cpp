@@ -2,8 +2,10 @@
 #include <cmath>
 #include <cstring>
 #include <unordered_map>
+#ifdef _WIN32
 #include <windows.h>
 #include <gdiplus.h>
+#endif
 
 extern Gdiplus::Bitmap* g_pScreen;
 extern HWND g_hWnd;
@@ -184,7 +186,11 @@ namespace {
 //  //glfwTerminate();
 //}
 
+#ifdef STD_STRING_VIEW
 PixelEngine::PixelEngine(int width, int height, std::string_view title, int scale)
+#else
+PixelEngine::PixelEngine(int width, int height, MyStringView title, int scale)
+#endif
   : width(width),
   height(height),
   title(title),

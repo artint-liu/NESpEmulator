@@ -148,6 +148,8 @@
     <ClInclude Include="..\src\mbedtls\platform_util.h" />
     <ClInclude Include="..\src\mbedtls\private_access.h" />
     <ClInclude Include="..\src\mbedtls\sha256.h" />
+    <ClInclude Include="..\src\myspan.h" />
+    <ClInclude Include="..\src\mystring_view.h" />
     <ClInclude Include="..\src\nes\APU.h" />
     <ClInclude Include="..\src\nes\APU\DMC.h" />
     <ClInclude Include="..\src\nes\APU\Envelope.h" />
@@ -172,6 +174,14 @@
     <ClInclude Include="..\src\nes\Mirroring.h" />
     <ClInclude Include="..\src\nes\NesFile.h" />
     <ClInclude Include="..\src\nes\PPU.h" />
+    <ClInclude Include="..\src\pixel_engine\EBO.h" />
+    <ClInclude Include="..\src\pixel_engine\Pixel.h" />
+    <ClInclude Include="..\src\pixel_engine\PixelEngine.h" />
+    <ClInclude Include="..\src\pixel_engine\Shader.h" />
+    <ClInclude Include="..\src\pixel_engine\TaskQueue.h" />
+    <ClInclude Include="..\src\pixel_engine\Texture.h" />
+    <ClInclude Include="..\src\pixel_engine\VAO.h" />
+    <ClInclude Include="..\src\pixel_engine\VBO.h" />
     <ClInclude Include="framework.h" />
     <ClInclude Include="NESpEmulator.h" />
     <ClInclude Include="Resource.h" />

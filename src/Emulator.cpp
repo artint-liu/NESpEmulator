@@ -3,7 +3,9 @@
 #include <cmath>
 #include <fstream>
 #include <iostream>
+#ifdef STD_NUMBERS
 #include <numbers>
+#endif
 
 #include <mbedtls/md.h>
 #include <mbedtls/sha256.h>
@@ -42,7 +44,7 @@ std::string getFileSha256(std::string_view filePath) {
 }
 } // namespace
 
-Emulator::Emulator(LPCSTR nesFile)
+Emulator::Emulator(const char* nesFile)
     : PixelEngine(256, 240, "Nes Emulator", 3),
       nesFilePath(nesFile),
       audioMaker(SampleRate, 1),
@@ -51,6 +53,7 @@ Emulator::Emulator(LPCSTR nesFile)
 void Emulator::onBegin() {
     PixelEngine::onBegin();
 
+#ifdef STD_FILESYSTEM
     if (!nesFilePath.has_filename()) {
         throw std::runtime_error{nesFilePath.string() + " is not a file"};
     }
@@ -58,8 +61,13 @@ void Emulator::onBegin() {
     if (!std::filesystem::exists(nesFilePath)) {
         throw std::runtime_error{nesFilePath.string() + " does not exist"};
     }
+#endif
 
+#ifdef STD_FILESYSTEM
     std::optional<Cartridge> cartridge = loadNesFile(nesFilePath.string());
+#else
+    std::optional<Cartridge> cartridge = loadNesFile(nesFilePath.c_str());
+#endif
     if (!cartridge.has_value()) {
         throw std::runtime_error{"Cannot load the NES ROM"};
     }
@@ -190,7 +198,9 @@ void Emulator::deserialize() {
     }
 }
 
-void Emulator::loadGameAchieve() {
+void Emulator::loadGameAchieve()
+{
+#ifdef STD_FILESYSTEM
     std::string sha256 = getFileSha256(nesFilePath.string());
     std::filesystem::path directory{".NesEmulator/"};
     if (!std::filesystem::exists(directory)) {
@@ -212,9 +222,12 @@ void Emulator::loadGameAchieve() {
             break;
         }
     }
+#endif
 }
 
-void Emulator::saveGameAchieve() {
+void Emulator::saveGameAchieve()
+{
+#ifdef STD_FILESYSTEM
     std::string sha256 = getFileSha256(nesFilePath.string());
     std::string filename = nesFilePath.filename().stem().string();
     std::string file = sha256 + "-" + filename;
@@ -231,6 +244,7 @@ void Emulator::saveGameAchieve() {
         nes.serialize(ofs);
         std::cout << "Save to " << filePath.string() << "\n";
     }
+#endif
 }
 
 void Emulator::debug() {

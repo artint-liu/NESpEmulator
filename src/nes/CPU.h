@@ -92,7 +92,7 @@ private:
     void BCC(std::uint16_t address);
     void BCS(std::uint16_t address);
     void BEQ(std::uint16_t address);
-    void BIT(std::uint16_t address);
+    void _BIT(std::uint16_t address);
     void BMI(std::uint16_t address);
     void BNE(std::uint16_t address);
     void BPL(std::uint16_t address);
@@ -106,7 +106,7 @@ private:
     void CMP(std::uint16_t address);
     void CPX(std::uint16_t address);
     void CPY(std::uint16_t address);
-    void DEC(std::uint16_t address);
+    void _DEC(std::uint16_t address);
     void DEX(std::uint16_t address);
     void DEY(std::uint16_t address);
     void EOR(std::uint16_t address);
@@ -119,7 +119,7 @@ private:
     void LDX(std::uint16_t address);
     void LDY(std::uint16_t address);
     void LSR(std::uint16_t address);
-    void NOP(std::uint16_t address);
+    void _NOP(std::uint16_t address);
     void ORA(std::uint16_t address);
     void PHA(std::uint16_t address);
     void PHP(std::uint16_t address);

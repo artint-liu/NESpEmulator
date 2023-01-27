@@ -2,12 +2,18 @@
 #define EMULATOR_H
 
 #include <condition_variable>
+#ifdef STD_FILESYSTEM
 #include <filesystem>
+#endif
 #include <functional>
 #include <mutex>
 #include <sstream>
 #include <string>
+#ifdef STD_STRING_VIEW
 #include <string_view>
+#else
+#include "mystring_view.h"
+#endif
 #include <unordered_map>
 #include <vector>
 #ifdef _WIN32
@@ -21,7 +27,7 @@
 
 class Emulator : public PixelEngine {
 public:
-    explicit Emulator(LPCSTR nesFile);
+    explicit Emulator(const char* nesFile);
 
     void onBegin() override;
     void onUpdate() override;
@@ -48,7 +54,11 @@ private:
     std::vector<std::int16_t> audioMakerGetData();
 
     Bus nes;
+#ifdef STD_FILESYSTEM
     std::filesystem::path nesFilePath;
+#else
+    std::string nesFilePath;
+#endif
 
     std::string dump;
     std::unordered_map<Key, std::function<void()>> pressKeyMap;

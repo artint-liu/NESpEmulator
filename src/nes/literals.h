@@ -7,7 +7,7 @@
 // So NES can output 5,369,319 / 89,342 ~= 60.098 frame per seconds
 constexpr auto FPS = 60;
 
-constexpr auto PpuFrequency = FPS * 89'342;
+constexpr auto PpuFrequency = FPS * 89342;
 constexpr auto CpuFrequency = PpuFrequency / 3;
 constexpr auto ApuFrequency = CpuFrequency / 2;
 
@@ -16,8 +16,8 @@ constexpr auto SampleCountPerFrame = SampleRate / FPS;
 
 constexpr auto FrameCounterFrequency = 240;
 
-constexpr auto operator"" _kb(unsigned long long byte) {
-    return 1024 * byte;
+constexpr unsigned long long operator"" _kb(unsigned long long byte) {
+    return (unsigned long long)(1024 * byte);
 }
 
 #endif // OCFBNJ_NES_LITERALS_H

@@ -10,17 +10,21 @@
 #include "myspan.h"
 #endif
 #include <string>
+#ifdef STD_STRING_VIEW
 #include <string_view>
+#else
+#include "mystring_view.h"
+#endif
 #include <thread>
 #include <vector>
 
-#include <pixel_engine/EBO.h>
+//#include <pixel_engine/EBO.h>
 #include <pixel_engine/Pixel.h>
-#include <pixel_engine/Shader.h>
+//#include <pixel_engine/Shader.h>
 #include <pixel_engine/TaskQueue.h>
-#include <pixel_engine/Texture.h>
-#include <pixel_engine/VAO.h>
-#include <pixel_engine/VBO.h>
+//#include <pixel_engine/Texture.h>
+//#include <pixel_engine/VAO.h>
+//#include <pixel_engine/VBO.h>
 
 struct GLFWwindow;
 
@@ -79,7 +83,11 @@ public:
     };
     // clang-format on
 
+#ifdef STD_STRING_VIEW
     PixelEngine(int width, int height, std::string_view title, int scale);
+#else
+    PixelEngine(int width, int height, MyStringView title, int scale);
+#endif
     virtual ~PixelEngine() = default;
 
     //void run();

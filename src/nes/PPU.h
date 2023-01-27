@@ -33,7 +33,7 @@ public:
         }
 #else
         MySpan<const std::uint8_t> getRawPixels() const {
-            return MySpan(reinterpret_cast<const std::uint8_t*>(pixels.data()), Width * Height * sizeof(Pixel));
+            return MySpan<const std::uint8_t>(reinterpret_cast<const std::uint8_t*>(pixels.data()), Width * Height * sizeof(Pixel));
         }
 #endif
 
